@@ -1,16 +1,21 @@
+import * as React from 'react';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+// import { Btn } from './Btn';
+import { Calendar } from './Calendar';
+// import { CustomDatePicker } from './CustomDatePicker';
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+<LocalizationProvider dateAdapter={AdapterDayjs}>
+    {/* <Btn /> */}
+    <Calendar />
+    {/* <CustomDatePicker /> */}
+
+</LocalizationProvider>
+    </>
   );
 };
