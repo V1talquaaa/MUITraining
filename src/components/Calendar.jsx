@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import * as React from 'react';
 import { useState } from 'react';
 import css from './Calendar.module.css'
-import { createTheme, ThemeProvider, CreateMUIStyled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { TextField } from '@mui/material';
 
@@ -27,11 +27,7 @@ const Calendar = () => {
         contrastText: '#000',
       },
     },
-    components: {
-      MuiPopover: {
-        backgroundColor: '#151515'
-      }
-    }
+
 
   });
 
