@@ -1,32 +1,33 @@
 import * as React from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-// import { Btn } from './Btn';
-import { Calendar } from './Calendar';
-import DateCalendar from '../components/calendar/Calendar';
-// import { CustomDatePicker } from './CustomDatePicker';
+import { Sidebar } from './Sidebar/Sidebar';
+import { Feed } from './Feed/Feed';
+import { Rightbar } from './Rightbar/Rightbar';
+import { Box, Stack, ThemeProvider, createTheme } from '@mui/material';
+import { Navbar } from './Navbar/Navbar';
+import { Add } from './Add/Add';
+import { useState } from 'react';
 
 export const App = () => {
-  return (
-    <>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        {/* <Btn /> */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-          }}
-        >
-          <Calendar />
-          <DateCalendar />
-        </div>
 
-        {/* <CustomDatePicker /> */}
-      </LocalizationProvider>
-    </>
+  const [mode, setMode] = useState("light")
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode
+    }
+  })
+  return (
+    <ThemeProvider theme={darkTheme}>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Navbar />
+      <Stack direction='row' spacing={2} justifyContent='space-around'>
+        <Sidebar setMode={setMode} mode={mode}/>
+        <Feed />
+        <Rightbar />
+      </Stack>
+      <Add />
+    </Box>
+    </ThemeProvider>
+
   );
 };

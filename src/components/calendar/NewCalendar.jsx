@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getMonth, getYear } from 'date-fns';
-import s from './Calendar.module.scss';
-import { CalendarButton } from './CalendarButton/CalendarButton';
+import s from './NewCalendar.module.css'; 
+import { CalendarButton } from 'components/calendar/CalendarButton/newButton';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-const CalendarColorful = ({
+const NewCalendar = ({
   onDate = () => null,
   deadline = String(new Date()),
 }) => {
@@ -33,20 +33,20 @@ const CalendarColorful = ({
     <DatePicker
       dateFormat="yyyy, MMMM ,d"
       selected={Date.parse(startDate)}
-      calendarClassName={s.calendarConatiner}
-      popperClassName={s.popperCustomClass}
+      calendarClassName={s.calendarContainer} 
+      popperClassName={s.popperCustomClass} 
       calendarStartDay={1}
       customInput={
         <CalendarButton
           value={String(startDate)}
-          onClick={e => {
+          onClick={(e) => {
             console.log(e.target);
           }}
         />
       }
-      onChange={date => setStartDate(String(date))}
+      onChange={(date) => setStartDate(String(date))}
       minDate={new Date()}
-      wrapperClassName={s.calendar}
+      wrapperClassName={s.calendar} 
       weekNumber={5}
       renderCustomHeader={({
         date,
@@ -55,7 +55,7 @@ const CalendarColorful = ({
         prevMonthButtonDisabled,
         nextMonthButtonDisabled,
       }) => (
-        <div className={s.headerWrapper}>
+        <div className={s.headerWrapper}> 
           <button
             onClick={decreaseMonth}
             disabled={prevMonthButtonDisabled}
@@ -81,4 +81,5 @@ const CalendarColorful = ({
   );
 };
 
-export default CalendarColorful;
+export default NewCalendar;
+
